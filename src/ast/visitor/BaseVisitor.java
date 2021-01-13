@@ -158,58 +158,102 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     }
 
     @Override
-    public Attribute visitHtmlAttribute(HTMLParser.HtmlAttributeContext ctx) {
-        Attribute attribute = new Attribute();
-        // handle cp app
-        if(ctx.cp().CP_APP() != null){
-            // Store values
-            String attrName = ctx.cp().CP_APP().getText();
-            String attrValue = ctx.cpStatment().expression().get(0).getText();
-            // Set values in attribute
-            attribute.setName(attrName);
-            attribute.setValue(attrValue);
-            // print out result
-            System.out.println(attribute.toString());
+    public Attributes visitAttributes(HTMLParser.AttributesContext ctx) {
+        Attributes attributes =new Attributes();
+        return attributes;
+    }
 
-        }
-        if(ctx.cp().CP_FOR() != null){
-            // TODO: Code here ..
-//            String expre1 = ctx.cpStatment().cp_for_statment().expression(0).getText();
-//            String expre2 = ctx.cpStatment().cp_for_statment().expression(1).getText();
-            // Store in attribute
-            attribute.setName(ctx.cp().CP_FOR().getText());
-//            attribute.setValue(ctx.cpStatment().cp_for_statment().getText());
-//            ctx.cp_for_statment()
+    @Override
+    public Cp visitCp(HTMLParser.CpContext ctx) {
+       Cp cp=new Cp();
+        return cp;
+    }
+
+    @Override
+    public Object visitCpSwitch(HTMLParser.CpSwitchContext ctx) {
+        return super.visitCpSwitch(ctx);
+    }
+
+
+    @Override
+    public CpStatment visitCpStatment(HTMLParser.CpStatmentContext ctx) {
+        System.out.println("visit Cp Statment");
+        CpStatment cpStatment=new CpStatment();
+        return cpStatment;
+    }
+
+    @Override
+    public Open_statment visitOpen_statment(HTMLParser.Open_statmentContext ctx) {
+        System.out.println("visit Open_statment");
+      Open_statment open_statment=new Open_statment();
+         return  open_statment;
+    }
+
+    @Override
+    public Close_statment visitClose_statment(HTMLParser.Close_statmentContext ctx) {
+        System.out.println(" visit Close statment");
+        Close_statment close_statment=new Close_statment();
+        return  close_statment;
+    }
+
+    @Override
+    public Cp_for_statment visitCp_for_statment(HTMLParser.Cp_for_statmentContext ctx) {
+        System.out.println("visit Cp_for_statment");
+        Cp_for_statment cp_for_statment=new Cp_for_statment();
+        return cp_for_statment;
+    }
+
+    @Override
+    public Cp_switch_Default visitCp_switch_Default(HTMLParser.Cp_switch_DefaultContext ctx) {
+        System.out.println("visit Cp_switch_Default");
+         Cp_switch_Default cp_switch_default=new Cp_switch_Default();
+        return cp_switch_default;
+    }
+
+    @Override
+    public htmlAttribute visitHtmlAttribute(HTMLParser.HtmlAttributeContext ctx) {
+
+        System.out.println("Html Attribute visit");
+        htmlAttribute htmlAttribute=new htmlAttribute();
+        Attribute attribute=new Attribute();
+
+
+
+//        if(htmlAttribute.getAttribute()!=null)
+//        {
+//            htmlAttribute.setAttribute(vi);
+//            htmlElements.setHtmlElement(visitHtmlElement(ctx.htmlElement()));
 //
-//            if(ctx.cpStatment().cp_for_statment().expression(1).array() != null){
-//
-////                System.out.println(ctx.cpStatment().cp_for_statment().expression(1).array().
-////                arraycontent().ARRAYCONTENT().getText());
-//            }
-            // print out result
-            System.out.println(attribute.toString());
-        }
-        if(ctx.cp().CP_IF() != null){
-            //
-            String name = ctx.cp().CP_IF().getText();
-            String value = ctx.cpStatment().getText();
-            // store values
-            attribute.setName(name);
-            attribute.setValue(value);
-            System.out.println(attribute.toString());
-        }
-        if(ctx.cp().CP_MODEL()!=null)
+//        }
+        if(htmlAttribute.getCp()!=null)
         {
-            String name = ctx.cp().CP_MODEL().getText();
-            String value = ctx.cpStatment().getText();
-            // store values
-            attribute.setName(name);
-            attribute.setValue(value);
-            System.out.println(attribute.toString());
+            htmlAttribute.setCp(visitCp(ctx.cp()));
         }
-
-
-        return attribute;
+        if(htmlAttribute.getOpen_statment()!=null)
+        {
+            htmlAttribute.setOpen_statment(visitOpen_statment(ctx.open_statment()));
+        }
+        if(htmlAttribute.getClose_statment()!=null)
+        {
+            htmlAttribute.setClose_statment(visitClose_statment(ctx.close_statment()));
+        }
+        if(htmlAttribute.getCpStatment()!=null)
+        {
+            htmlAttribute.setCpStatment(visitCpStatment(ctx.cpStatment()));
+        }
+        if(htmlAttribute.getCp_for_statment()!=null)
+        {
+            htmlAttribute.setCp_for_statment(visitCp_for_statment(ctx.cp_for_statment()));
+        }
+        if(htmlAttribute.getCp_switch_default()!=null)
+        {
+            htmlAttribute.setCp_switch_default(visitCp_switch_Default(ctx.cp_switch_Default()));
+        }
+        if(htmlAttribute.getAttributes()!=null)
+        {
+            htmlAttribute.setAttributes(visitAttributes(ctx.attributes()));
+        }
+        return htmlAttribute;
     }
 
     @Override

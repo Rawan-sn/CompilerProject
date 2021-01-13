@@ -7,6 +7,33 @@ public class htmlAttribute extends  Node {
    Open_statment open_statment=new Open_statment();
    Close_statment close_statment=new Close_statment();
    CpStatment cpStatment=new CpStatment();
+   Cp_for_statment cp_for_statment=new Cp_for_statment();
+   Cp_switch_Default cp_switch_default=new Cp_switch_Default();
+   Attributes attributes=new Attributes();
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
+    }
+
+    public Cp_switch_Default getCp_switch_default() {
+        return cp_switch_default;
+    }
+
+    public void setCp_switch_default(Cp_switch_Default cp_switch_default) {
+        this.cp_switch_default = cp_switch_default;
+    }
+
+    public Cp_for_statment getCp_for_statment() {
+        return cp_for_statment;
+    }
+
+    public void setCp_for_statment(Cp_for_statment cp_for_statment) {
+        this.cp_for_statment = cp_for_statment;
+    }
 
     public CpStatment getCpStatment() {
         return cpStatment;
