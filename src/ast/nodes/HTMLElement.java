@@ -6,24 +6,8 @@ import java.util.List;
 public class HTMLElement extends Node{
 
     private String name;
-    private List<htmlAttribute> attributes = new ArrayList<htmlAttribute>();
+    private List<htmlAttribute> htmlAttribute = new ArrayList<htmlAttribute>();
     private htmlContent htmlContent =  new htmlContent();
-
-    public ast.nodes.htmlContent getHtmlContent() {
-        return htmlContent;
-    }
-
-    public void setHtmlContent(ast.nodes.htmlContent htmlContent) {
-        this.htmlContent = htmlContent;
-    }
-
-    public List<htmlAttribute> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(List<htmlAttribute> attributes) {
-        this.attributes = attributes;
-    }
 
     public String getName() {
         return name;
@@ -33,12 +17,20 @@ public class HTMLElement extends Node{
         this.name = name;
     }
 
-    public List<htmlAttribute> getElement() {
-        return attributes;
+    public List<htmlAttribute> getHtmlAttribute() {
+        return htmlAttribute;
     }
 
-    public void setElement(List<htmlAttribute> elements) {
-        this.attributes = elements;
+    public void setHtmlAttribute(List<htmlAttribute> htmlAttribute) {
+        this.htmlAttribute = htmlAttribute;
+    }
+
+    public htmlContent getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(htmlContent htmlContent) {
+        this.htmlContent = htmlContent;
     }
 
     @Override
