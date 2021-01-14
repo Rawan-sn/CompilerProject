@@ -2,14 +2,14 @@ package ast.nodes;
 
 public class htmlAttribute extends  Node {
 
-   Attribute attribute =new Attribute();
-   Cp cp=new Cp();
-   Open_statment open_statment=new Open_statment();
-   Close_statment close_statment=new Close_statment();
-   CpStatment cpStatment=new CpStatment();
-   Cp_for_statment cp_for_statment=new Cp_for_statment();
-   Cp_switch_Default cp_switch_default=new Cp_switch_Default();
-   Attributes attributes=new Attributes();
+   private Attribute attribute =new Attribute();
+   private Cp cp=new Cp();
+   private Open_statment open_statment=new Open_statment();
+   private Close_statment close_statment=new Close_statment();
+   private CpStatment cpStatment=new CpStatment();
+   private Cp_for_statment cp_for_statment=new Cp_for_statment();
+   private Cp_switch_Default cp_switch_default=new Cp_switch_Default();
+   private Attributes attributes=new Attributes();
 
     public Attributes getAttributes() {
         return attributes;

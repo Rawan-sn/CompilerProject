@@ -5,8 +5,8 @@ import java.util.List;
 
 public class CpStatment extends  Node {
 
-  List<String> spaces=new ArrayList<>();
-  List<Expression> expressions=new ArrayList<>();
+  private List<String> spaces=new ArrayList<>();
+  private List<Expression> expressions=new ArrayList<>();
 
     public List<Expression> getExpressions() {
         return expressions;

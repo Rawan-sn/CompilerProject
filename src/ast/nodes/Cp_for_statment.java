@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Cp_for_statment extends  Node {
 
-       List<Expression> list=new ArrayList<>();
+    private  List<Expression> list=new ArrayList<>();
 
     public List<Expression> getList() {
         return list;

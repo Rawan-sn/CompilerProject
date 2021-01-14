@@ -5,16 +5,16 @@ import java.util.List;
 
 public class HTMLElement extends Node{
 
-    private String name;
+    private String SCRIPTLET;
     private List<htmlAttribute> htmlAttribute = new ArrayList<htmlAttribute>();
     private htmlContent htmlContent =  new htmlContent();
 
-    public String getName() {
-        return name;
+    public String getSCRIPTLET() {
+        return SCRIPTLET;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSCRIPTLET(String SCRIPTLET) {
+        this.SCRIPTLET = SCRIPTLET;
     }
 
     public List<htmlAttribute> getHtmlAttribute() {

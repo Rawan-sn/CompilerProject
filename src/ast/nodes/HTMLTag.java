@@ -14,15 +14,15 @@ public class HTMLTag extends HTMLElement {
         this.content = content;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSCRIPTLET(String SCRIPTLET) {
+        this.name = SCRIPTLET;
     }
 
     public void setAttributes(List<Attribute> attributes) {
         this.attributes = attributes;
     }
 
-    public String getName() {
+    public String getSCRIPTLET() {
         return name;
     }
 
@@ -44,7 +44,7 @@ public class HTMLTag extends HTMLElement {
 
     @Override
     public String toString(){
-        return "tag name: "+ getName() + "\n \t" + "content: " + getTextContent();
+        return "tag name: "+ getSCRIPTLET() + "\n \t" + "content: " + getTextContent();
     }
 
 }

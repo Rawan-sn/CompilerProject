@@ -65,64 +65,22 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
 //        return super.visitHtmlElements(ctx);
     }
 
-
-
     @Override
     public HTMLElement visitHtmlElement(HTMLParser.HtmlElementContext ctx) {
-
-        System.out.println("Visit Html Element");
+        System.out.println("visit HtmlElement");
         HTMLElement htmlElement=new HTMLElement();
-        HTMLTag tag = new HTMLTag();
-        System.out.println("Tag Name : "+ctx.TAG_NAME(0).getText());
-        System.out.println("---------------------------------------------------");
-        System.out.println(ctx.TAG_NAME().size() + "hhhhhhhhhhhhhhhhhhh");
-        //Attribute attribute=new Attribute();
-        tag.setName(ctx.TAG_NAME(0).getText());
-        System.out.println("HTML element: " + ctx.TAG_NAME(0).getText());
-        if (ctx.htmlContent().htmlElement().size() <= 0) {
-            tag.setTextContent(ctx.htmlContent().getText());
-            List<Attribute> attributeList = new ArrayList<Attribute>();
-            for (int i = 0; i < ctx.htmlAttribute().size(); i++) {
-                Attribute attribute = visitHtmlAttribute(ctx.htmlAttribute(i));
-                attributeList.add(attribute);
-                 //Todo
-
-//                htmlElement.getAttributes().add(visitHtmlAttribute(ctx.at)));
-            }
-              // -------------------------------------------------------
-              if(ctx.htmlContent()!=null)
-              {
-                  htmlContent content =visitHtmlContent(ctx.htmlContent());
-              }
-
-
-
-
-            //
-            tag.setAttributes(attributeList);
-            return tag;
-            //TODO iterate on ctx.htmlAttribute() and generate attribute then set its tag
-        } else if (ctx.htmlContent().htmlElement().size() > 0) {
-            // Visit all html attributes
-            List<Attribute> attributeList = new ArrayList<Attribute>();
-            for (int i = 0; i < ctx.htmlAttribute().size(); i++) {
-                Attribute attribute = visitHtmlAttribute(ctx.htmlAttribute(i));
-                attributeList.add(attribute);
-            }
-            tag.setAttributes(attributeList);
-            // Visit all html elements (children)
-            List<HTMLElement> elements = new ArrayList<HTMLElement>();
-            System.out.println(", children: [ ");
-            for (int i = 0; i < ctx.htmlContent().htmlElement().size(); i++) {
-//                comments.add(ctx.htmlContent().htmlComment(i));
-                elements.add(visitHtmlElement(ctx.htmlContent().htmlElement(i)));
-                System.out.print(",");
-            }
-            System.out.print(" ] ");
-            tag.setContent(elements);
-            return tag;
+        if(ctx.SCRIPTLET()!=null)
+        {
+            htmlElement.setSCRIPTLET(ctx.SCRIPTLET().toString());
         }
-
+        for(int i=0;i<ctx.htmlAttribute().size();i++)
+        {
+            htmlElement.getHtmlAttribute().add(visitHtmlAttribute(ctx.htmlAttribute(i)));
+        }
+        if(ctx.htmlContent()!=null)
+        {
+            htmlElement.setHtmlContent(visitHtmlContent(ctx.htmlContent()));
+        }
         return htmlElement;
     }
 
@@ -164,7 +122,41 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
 
     @Override
     public Attributes visitAttributes(HTMLParser.AttributesContext ctx) {
+        System.out.println("visit Attributes");
         Attributes attributes =new Attributes();
+        if(ctx.ID()!=null)
+        {
+            attributes.setID(ctx.ID().toString());
+        }
+        if(ctx.TYPE()!=null)
+        {
+            attributes.setTYPE(ctx.TYPE().toString());
+        }
+        if(ctx.CLASS()!=null)
+        {
+            attributes.setCLASS(ctx.CLASS().toString());
+        }
+        if(ctx.CLICK()!=null)
+        {
+            attributes.setCLICK(ctx.CLICK().toString());
+        }
+        if(ctx.MOUSEOVER()!=null)
+        {
+            attributes.setMOUSEOVER(ctx.MOUSEOVER().toString());
+        }
+        if(ctx.DATAMODULE()!=null)
+        {
+            attributes.setDATAMODULE(ctx.DATAMODULE().toString());
+        }
+        if(ctx.open_statment()!=null)
+        {
+            attributes.setOpen_statment(visitOpen_statment(ctx.open_statment()));
+        }
+        if(ctx.close_statment()!=null)
+        {
+            attributes.setClose_statment(visitClose_statment(ctx.close_statment()));
+        }
+
         return attributes;
     }
 
@@ -358,14 +350,6 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         htmlAttribute htmlAttribute=new htmlAttribute();
         Attribute attribute=new Attribute();
 
-
-
-//        if(htmlAttribute.getAttribute()!=null)
-//        {
-//            htmlAttribute.setAttribute(vi);
-//            htmlElements.setHtmlElement(visitHtmlElement(ctx.htmlElement()));
-//
-//        }
         if(htmlAttribute.getCp()!=null)
         {
             htmlAttribute.setCp(visitCp(ctx.cp()));
@@ -469,14 +453,59 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     protected void finalize() throws Throwable {
         super.finalize();
     }
+//    @Override
+//    public HTMLElement visitHtmlElement(HTMLParser.HtmlElementContext ctx) {
 //
-//    public void visit(cpIF cpif) {
+//        System.out.println("Visit Html Element");
+//        HTMLElement htmlElement=new HTMLElement();
+//        HTMLTag tag = new HTMLTag();
+//        System.out.println("Tag Name : "+ctx.TAG_NAME(0).getText());
+//        System.out.println("---------------------------------------------------");
+//        System.out.println(ctx.TAG_NAME().size() + "hhhhhhhhhhhhhhhhhhh");
+//        //Attribute attribute=new Attribute();
+//        tag.setName(ctx.TAG_NAME(0).getText());
+//        System.out.println("HTML element: " + ctx.TAG_NAME(0).getText());
+//        if (ctx.htmlContent().htmlElement().size() <= 0) {
+//            tag.setTextContent(ctx.htmlContent().getText());
+//            List<Attribute> attributeList = new ArrayList<Attribute>();
+//            for (int i = 0; i < ctx.htmlAttribute().size(); i++) {
+//                Attribute attribute = visitHtmlAttribute(ctx.htmlAttribute(i));
+//                attributeList.add(attribute);
+//                //Todo
 //
-//        System.out.println("visited");
-//        if (cpif.getName() != null) {
-//            cpif.accept(this);
-//            System.out.println("cc" + cpif.getName());
+////                htmlElement.getAttributes().add(visitHtmlAttribute(ctx.at)));
+//            }
+//            // -------------------------------------------------------
+//            if(ctx.htmlContent()!=null)
+//            {
+//                htmlContent content =visitHtmlContent(ctx.htmlContent());
+//            }
+//            //
+//            tag.setAttributes(attributeList);
+//            return tag;
+//            //TODO iterate on ctx.htmlAttribute() and generate attribute then set its tag
+//        } else if (ctx.htmlContent().htmlElement().size() > 0) {
+//            // Visit all html attributes
+//            List<Attribute> attributeList = new ArrayList<Attribute>();
+//            for (int i = 0; i < ctx.htmlAttribute().size(); i++) {
+//                Attribute attribute = visitHtmlAttribute(ctx.htmlAttribute(i));
+//                attributeList.add(attribute);
+//            }
+//            tag.setAttributes(attributeList);
+//            // Visit all html elements (children)
+//            List<HTMLElement> elements = new ArrayList<HTMLElement>();
+//            System.out.println(", children: [ ");
+//            for (int i = 0; i < ctx.htmlContent().htmlElement().size(); i++) {
+////                comments.add(ctx.htmlContent().htmlComment(i));
+//                elements.add(visitHtmlElement(ctx.htmlContent().htmlElement(i)));
+//                System.out.print(",");
+//            }
+//            System.out.print(" ] ");
+//            tag.setContent(elements);
+//            return tag;
 //        }
-//        //cpif.accept(this);
+//
+//        return htmlElement;
 //    }
+
 }

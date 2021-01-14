@@ -1,7 +1,7 @@
 package ast.nodes;
 
 public class htmlChardata {
-    String name;
+    private String name;
 
 
     public String getName() {

@@ -2,13 +2,13 @@ package ast.nodes;
 
 public class Expression  extends  Node {
 
-   String ATT_VARIABLE;
-   Array array=new Array();
-   FunctionCall functionCall=new FunctionCall();
-   String OBJ;
-   String INDEX;
-   String ATTVALUE_VALUE;
-   String ATT_NUMBER;
+   private String ATT_VARIABLE;
+   private Array array=new Array();
+   private FunctionCall functionCall=new FunctionCall();
+   private String OBJ;
+   private String INDEX;
+   private String ATTVALUE_VALUE;
+   private String ATT_NUMBER;
 
 
     public String getATT_VARIABLE() {
