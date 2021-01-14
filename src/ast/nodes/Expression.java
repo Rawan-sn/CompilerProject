@@ -2,7 +2,7 @@ package ast.nodes;
 
 public class Expression  extends  Node {
 
-   String ATT_VARIABLE="";
+   String ATT_VARIABLE;
    Array array=new Array();
    FunctionCall functionCall=new FunctionCall();
    String OBJ;

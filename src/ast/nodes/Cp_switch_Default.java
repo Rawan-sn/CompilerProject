@@ -1,7 +1,7 @@
 package ast.nodes;
 
 public class Cp_switch_Default extends  Node {
-   private String CP_SWITCH_DEFAULT="";
+   private String CP_SWITCH_DEFAULT;
 
 
 

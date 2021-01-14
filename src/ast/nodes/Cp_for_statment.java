@@ -5,17 +5,15 @@ import java.util.List;
 
 public class Cp_for_statment extends  Node {
 
-    public Expression getExpression() {
-        return expression;
+       List<Expression> list=new ArrayList<>();
+
+    public List<Expression> getList() {
+        return list;
     }
 
-    public void setExpression(Expression expression) {
-        this.expression = expression;
+    public void setList(List<Expression> list) {
+        this.list = list;
     }
-
-    //    List<Expression> list=new ArrayList<>();
-    Expression expression = new Expression();
-
 
     @Override
     public void accept(AstVisitorInterface astVisitor) {

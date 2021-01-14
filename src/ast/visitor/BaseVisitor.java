@@ -128,7 +128,12 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
 
     @Override
     public Content visitContent(HTMLParser.ContentContext ctx) {
-       Content content =new Content();
+        System.out.println("visit Content");
+        Content content =new Content();
+        if(ctx.expression()!=null)
+        {
+            content.setExpression(visitExpression(ctx.expression()));
+        }
         return content;
     }
 
@@ -165,12 +170,47 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
 
     @Override
     public Cp visitCp(HTMLParser.CpContext ctx) {
-       Cp cp=new Cp();
+        System.out.println("Visit Cp");
+        Cp cp=new Cp();
+        if(ctx.CP_IF()!=null)
+        {
+         cp.setCP_IF(ctx.CP_IF().toString());
+        }
+        if(ctx.CP_MODEL()!=null)
+        {
+            cp.setCP_MODEL(ctx.CP_MODEL().toString());
+        }
+        if(ctx.CP_APP()!=null)
+        {
+            cp.setCP_APP(ctx.CP_APP().toString());
+        }
+        if(ctx.CP_FOR()!=null)
+        {
+            cp.setCP_FOR(ctx.CP_FOR().toString());
+        }
+        if(ctx.CP_HIDE()!=null)
+        {
+            cp.setCP_HIDE(ctx.CP_HIDE().toString());
+        }
+        if(ctx.CP_SHOW()!=null)
+        {
+            cp.setCP_SHOW(ctx.CP_SHOW().toString());
+        }
+        if(ctx.CP_SWITCH()!=null)
+        {
+            cp.setCP_SWITCH(ctx.CP_SWITCH().toString());
+        }
+        if(ctx.CP_SWITCH_CASE()!=null)
+        {
+            cp.setCP_SWITCH(ctx.CP_SWITCH().toString());
+        }
+
         return cp;
     }
 
     @Override
     public Object visitCpSwitch(HTMLParser.CpSwitchContext ctx) {
+        System.out.println("visit CpSwitch");
         return super.visitCpSwitch(ctx);
     }
 
@@ -179,7 +219,100 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     public CpStatment visitCpStatment(HTMLParser.CpStatmentContext ctx) {
         System.out.println("visit Cp Statment");
         CpStatment cpStatment=new CpStatment();
+         for(int i=0;i<ctx.expression().size();i++)
+         {
+             cpStatment.getExpressions().add(visitExpression((ctx.expression(i))));
+         }
+        for(int i=0;i<ctx.NOT().size();i++)
+        {
+            cpStatment.getSpaces().add(ctx.NOT(i).toString());
+        }
         return cpStatment;
+    }
+
+    @Override
+    public Array visitArray(HTMLParser.ArrayContext ctx) {
+        System.out.println("visit Array");
+         Array array=new Array();
+         if(ctx.arraycontent()!=null)
+         {
+             array.setArraycontent(visitArraycontent(ctx.arraycontent()));
+         }
+        return array;
+    }
+
+    ///// Todo
+    @Override
+    public Arraycontent visitArraycontent(HTMLParser.ArraycontentContext ctx) {
+        System.out.println("visit Arraycontent");
+        Arraycontent arraycontent=new Arraycontent();
+        if(ctx.array()!=null)
+        {
+            arraycontent.setArray(visitArray(ctx.array()));
+        }
+        return  arraycontent;
+    }
+
+    @Override
+    public FunctionCall visitFunctionCall(HTMLParser.FunctionCallContext ctx) {
+        System.out.println("visit FunctionCall");
+        FunctionCall functionCall=new FunctionCall();
+        if(ctx.ATT_VARIABLE()!=null)
+        {
+            functionCall.setATT_VARIABLE(ctx.ATT_VARIABLE().toString());
+        }
+        for(int i=0;i<ctx.functionParametr().size();i++)
+        {
+            functionCall.getFunctionParametrs().add(visitFunctionParametr(ctx.functionParametr(i)));
+        }
+        return functionCall;
+    }
+
+    @Override
+    public FunctionParametr visitFunctionParametr(HTMLParser.FunctionParametrContext ctx) {
+        System.out.println("visit FunctionParametr");
+      FunctionParametr functionParametr=new FunctionParametr();
+       if(ctx.ATT_VARIABLE()!=null)
+       {
+           functionParametr.setATT_VARIABLE(ctx.ATT_VARIABLE().toString());
+       }
+       if(ctx.functionCall()!=null)
+       {
+           functionParametr.setFunctionCall(visitFunctionCall(ctx.functionCall()));
+       }
+        return functionParametr;
+    }
+
+    @Override
+    public Expression visitExpression(HTMLParser.ExpressionContext ctx) {
+        System.out.println("visit Expression");
+         Expression expression=new Expression();
+         if(ctx.ATT_VARIABLE()!=null)
+         {
+             expression.setATT_VARIABLE(ctx.ATT_VARIABLE().toString());
+         }
+          if(ctx.array()!=null)
+          {
+              expression.setArray(visitArray(ctx.array()));
+          }
+          if(ctx.functionCall()!=null)
+          {
+              expression.setFunctionCall(visitFunctionCall(ctx.functionCall()));
+          }
+
+           if(ctx.OBJ()!=null){
+            expression.setOBJ(ctx.OBJ().toString());
+        }
+        if(ctx.INDEX()!=null){
+            expression.setINDEX(ctx.INDEX().toString());
+        }
+        if(ctx.ATTVALUE_VALUE()!=null){
+            expression.setATTVALUE_VALUE(ctx.ATTVALUE_VALUE().toString());
+        }
+        if(ctx.ATT_NUMBER()!=null){
+            expression.setATT_NUMBER(ctx.ATT_NUMBER().toString());
+        }
+        return  expression;
     }
 
     @Override
@@ -200,6 +333,10 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     public Cp_for_statment visitCp_for_statment(HTMLParser.Cp_for_statmentContext ctx) {
         System.out.println("visit Cp_for_statment");
         Cp_for_statment cp_for_statment=new Cp_for_statment();
+         for(int i=0;i<ctx.expression().size();i++)
+         {
+             cp_for_statment.getList().add(visitExpression(ctx.expression(i)));
+         }
         return cp_for_statment;
     }
 
@@ -207,6 +344,10 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     public Cp_switch_Default visitCp_switch_Default(HTMLParser.Cp_switch_DefaultContext ctx) {
         System.out.println("visit Cp_switch_Default");
          Cp_switch_Default cp_switch_default=new Cp_switch_Default();
+         if(ctx.CP_SWITCH_DEFAULT()!=null)
+         {
+             cp_switch_default.setCP_SWITCH_DEFAULT(ctx.CP_SWITCH_DEFAULT().toString());
+         }
         return cp_switch_default;
     }
 
@@ -258,19 +399,38 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
 
     @Override
     public htmlChardata visitHtmlChardata(HTMLParser.HtmlChardataContext ctx) {
-          htmlChardata htmlChardata=new htmlChardata();
+        System.out.println("visit HtmlChardata");
+        htmlChardata htmlChardata=new htmlChardata();
+        if(ctx.HTML_TEXT()!=null)
+        {
+            htmlChardata.setName(ctx.HTML_TEXT().toString());
+        }
         return htmlChardata;
     }
 
     @Override
     public htmlMisc visitHtmlMisc(HTMLParser.HtmlMiscContext ctx) {
-         htmlMisc htmlMisc=new htmlMisc();
+        System.out.println("visit HtmlMisc");
+        htmlMisc htmlMisc=new htmlMisc();
+        if(ctx.htmlComment()!=null)
+        {
+            htmlMisc.setComment(visitHtmlComment(ctx.htmlComment()));
+        }
         return htmlMisc;
     }
 
     @Override
     public htmlComment visitHtmlComment(HTMLParser.HtmlCommentContext ctx) {
-         htmlComment htmlComment =new htmlComment();
+        System.out.println("visit HtmlComment");
+        htmlComment htmlComment =new htmlComment();
+        if(ctx.HTML_COMMENT()!=null)
+        {
+            htmlComment.setHTML_COMMENT(ctx.HTML_COMMENT().toString());
+        }
+        if(ctx.HTML_CONDITIONAL_COMMENT()!=null)
+        {
+            htmlComment.setHTML_CONDITIONAL_COMMENT(ctx.HTML_CONDITIONAL_COMMENT().toString());
+        }
         return  htmlComment;
     }
 
