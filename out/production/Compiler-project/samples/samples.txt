@@ -1,7 +1,5 @@
-<!-- fkjg -->
-<html cp-model="xx">
-  <head>
-  <fd> {{x}} lsdjflsdjlfjl
-        </fd>
-  </head>
+<html>
+<body>
+<div cp-if="isAuthenitcated">
+</body>
 </html>

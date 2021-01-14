@@ -9,6 +9,13 @@ public class HTMLTag extends HTMLElement {
     private List<HTMLElement> content = new ArrayList<HTMLElement>();
     private String textContent;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setContent(List<HTMLElement> content) {
         this.content = content;

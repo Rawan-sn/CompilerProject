@@ -40,7 +40,6 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         return doc;
     }
 
-
     @Override
     public scriptletOrSeaWs visitScriptletOrSeaWs(HTMLParser.ScriptletOrSeaWsContext ctx) {
           scriptletOrSeaWs scriptletOrSeaWs=new scriptletOrSeaWs();
@@ -52,6 +51,8 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     public htmlElements visitHtmlElements(HTMLParser.HtmlElementsContext ctx) {
         System.out.println("visitHtmlElements");
         htmlElements htmlElements=new htmlElements();
+
+
         for(int i=0;i<ctx.htmlMisc().size();i++)
         {
             htmlElements.getHtmlMiscs().add(visitHtmlMisc(ctx.htmlMisc(i)));
@@ -69,10 +70,28 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
     public HTMLElement visitHtmlElement(HTMLParser.HtmlElementContext ctx) {
         System.out.println("visit HtmlElement");
         HTMLElement htmlElement=new HTMLElement();
-        if(ctx.SCRIPTLET()!=null)
+//        HTMLTag tag = new HTMLTag();
+//        System.out.println("Tag Name : "+ctx.TAG_NAME(0).getText());
+//
+//        System.out.println(ctx.TAG_NAME().size() + "hhhhhhhhhhhhhhhhhhh");
+//        //Attribute attribute=new Attribute();
+//        tag.setName(ctx.TAG_NAME(0).getText());
+//        System.out.println("HTML element: " + ctx.TAG_NAME(0).getText());
+//
+
+
+        for(int i=0;i<ctx.TAG_OPEN().size();i++)
         {
-            htmlElement.setSCRIPTLET(ctx.SCRIPTLET().toString());
+            htmlElement.getTAG_OPEN().add(ctx.TAG_OPEN(i).toString());
+            System.out.println("TAG Open : "+ctx.TAG_OPEN(i));
         }
+        for(int i=0;i<ctx.TAG_NAME().size();i++)
+        {
+            htmlElement.getTAG_NAME().add(ctx.TAG_NAME(i).toString());
+            System.out.println("TAG NAME : "+ctx.TAG_NAME(i));
+
+        }
+
         for(int i=0;i<ctx.htmlAttribute().size();i++)
         {
             htmlElement.getHtmlAttribute().add(visitHtmlAttribute(ctx.htmlAttribute(i)));
@@ -80,6 +99,28 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         if(ctx.htmlContent()!=null)
         {
             htmlElement.setHtmlContent(visitHtmlContent(ctx.htmlContent()));
+        }
+        if(ctx.TAG_SLASH()!=null)
+        {
+            htmlElement.setTAG_SLASH(ctx.TAG_SLASH().toString());
+            System.out.println("TAG SLASH : "+ctx.TAG_SLASH());
+
+        }
+        for(int i=0;i<ctx.TAG_CLOSE().size();i++)
+        {
+            htmlElement.getTAG_CLOSE().add(ctx.TAG_CLOSE(i).toString());
+            System.out.println("TAG CLOSE : "+ctx.TAG_CLOSE(i));
+
+        }
+        if(ctx.TAG_SLASH_CLOSE()!=null)
+        {
+            System.out.println("Tag slash close "+ctx.TAG_SLASH_CLOSE());
+            htmlElement.setTAG_SLASH_CLOSE(ctx.TAG_SLASH_CLOSE().toString());
+        }
+        if(ctx.SCRIPTLET()!=null)
+        {
+            System.out.println("mmmm"+ctx.SCRIPTLET().getText());
+            htmlElement.setSCRIPTLET(ctx.SCRIPTLET().toString());
         }
         return htmlElement;
     }
@@ -166,7 +207,8 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         Cp cp=new Cp();
         if(ctx.CP_IF()!=null)
         {
-         cp.setCP_IF(ctx.CP_IF().toString());
+            cp.setCP_IF(ctx.CP_IF().toString());
+            System.out.println(ctx.CP_IF().toString());
         }
         if(ctx.CP_MODEL()!=null)
         {
@@ -205,7 +247,6 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         System.out.println("visit CpSwitch");
         return super.visitCpSwitch(ctx);
     }
-
 
     @Override
     public CpStatment visitCpStatment(HTMLParser.CpStatmentContext ctx) {
@@ -429,30 +470,6 @@ public class BaseVisitor extends HTMLParserBaseVisitor  {
         return super.visitStyle(ctx);
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
 //    @Override
 //    public HTMLElement visitHtmlElement(HTMLParser.HtmlElementContext ctx) {
 //

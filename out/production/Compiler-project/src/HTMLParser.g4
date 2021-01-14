@@ -17,11 +17,8 @@ htmlElements
     : htmlMisc* htmlElement htmlMisc*
     ;
 
-
-
 htmlElement
-    : TAG_OPEN TAG_NAME htmlAttribute*
-      (TAG_CLOSE (htmlContent TAG_OPEN TAG_SLASH TAG_NAME TAG_CLOSE)? | TAG_SLASH_CLOSE)
+    : TAG_OPEN TAG_NAME htmlAttribute*   (TAG_CLOSE (htmlContent TAG_OPEN TAG_SLASH TAG_NAME TAG_CLOSE)? | TAG_SLASH_CLOSE)
     | SCRIPTLET
     | script
     | style
@@ -51,20 +48,6 @@ attributes
 cp
     :( CP_IF | CP_APP | CP_HIDE | CP_MODEL | CP_SHOW | CP_SWITCH |  CP_SWITCH_CASE |CP_FOR)
     ;
-
-
-cpSwitch
-   :
-   CP_SWITCH
-   ;
-cpSwitchCase
-   :
-   CP_SWITCH_CASE
-   ;
-cpFor
-   :
-   CP_FOR
-   ;
 
 
 cpStatment

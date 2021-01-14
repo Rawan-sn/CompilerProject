@@ -2,7 +2,7 @@ package ast.nodes;
 
 public class Array extends  Node {
 
-    Arraycontent arraycontent = new Arraycontent();
+    private Arraycontent arraycontent = new Arraycontent();
 
     public Arraycontent getArraycontent() {
         return arraycontent;

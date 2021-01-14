@@ -18,8 +18,7 @@ htmlElements
     ;
 
 htmlElement
-    : TAG_OPEN TAG_NAME htmlAttribute*
-      (TAG_CLOSE (htmlContent TAG_OPEN TAG_SLASH TAG_NAME TAG_CLOSE)? | TAG_SLASH_CLOSE)
+    : TAG_OPEN TAG_NAME htmlAttribute*   (TAG_CLOSE (htmlContent TAG_OPEN TAG_SLASH TAG_NAME TAG_CLOSE)? | TAG_SLASH_CLOSE)
     | SCRIPTLET
     | script
     | style
