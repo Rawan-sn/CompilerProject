@@ -5,13 +5,23 @@ import ast.nodes.*;
 import generated.HTMLParser;
 import generated.HTMLParserBaseVisitor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseVisitor extends HTMLParserBaseVisitor {
     @Override
     public HtmlDocument visitHtmlDocument(HTMLParser.HtmlDocumentContext ctx) {
         System.out.println("\nhtml document");
         HtmlDocument doc = new HtmlDocument();
-        for (int i = 0; i < ctx.htmlElements().size(); i++) {
-            doc.getElements().add(visitHtmlElements(ctx.htmlElements(i)));
+        for (int i = 0; i < ctx.htmlMisc().size(); i++) {
+            doc.getMiscs().add(visitHtmlMisc(ctx.htmlMisc(i)));
+//            if (i == 0) {
+//                System.out.print("\nComment Visited  : ");
+//            }
+            System.out.println(ctx.htmlMisc(i).getText());
+        }
+        for (int i = 0; i < ctx.scriptletOrSeaWs().size(); i++) {
+            doc.getScriptletOrSeaWs().add(visitScriptletOrSeaWs(ctx.scriptletOrSeaWs(i)));
         }
         if (ctx.XML() != null) {
             doc.setXml(true);
@@ -19,15 +29,9 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         if (ctx.DTD() != null) {
             doc.setDtd(true);
         }
-        for (int i = 0; i < ctx.htmlMisc().size(); i++) {
-            doc.getMiscs().add(visitHtmlMisc(ctx.htmlMisc(i)));
-            if (i == 0) {
-                System.out.print("\nComment Visited  : ");
-            }
-            System.out.println(ctx.htmlMisc(i).getText());
-        }
-        for (int i = 0; i < ctx.scriptletOrSeaWs().size(); i++) {
-            doc.getScriptletOrSeaWs().add(visitScriptletOrSeaWs(ctx.scriptletOrSeaWs(i)));
+
+        for (int i = 0; i < ctx.htmlElements().size(); i++) {
+            doc.getElements().add(visitHtmlElements(ctx.htmlElements(i)));
         }
 
         return doc;
@@ -37,7 +41,9 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
     public scriptletOrSeaWs visitScriptletOrSeaWs(HTMLParser.ScriptletOrSeaWsContext ctx) {
         scriptletOrSeaWs scriptletOrSeaWs = new scriptletOrSeaWs();
         if (ctx.SCRIPTLET() != null) {
-            //  ctx.getText().toString();
+            System.out.println("Script left" + ctx.SCRIPTLET().toString());
+            System.out.println("Script left" + ctx.SCRIPTLET().getText());
+
             scriptletOrSeaWs.setScriptLeft(ctx.SCRIPTLET().toString());
         }
         return scriptletOrSeaWs;
@@ -89,17 +95,18 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         for (int i = 0; i < ctx.htmlAttribute().size(); i++) {
             htmlElement.getHtmlAttribute().add(visitHtmlAttribute(ctx.htmlAttribute(i)));
         }
+        for (int i = 0; i < ctx.TAG_CLOSE().size(); i++) {
+            htmlElement.getTAG_CLOSE().add(ctx.TAG_CLOSE(i).toString());
+            System.out.println("TAG CLOSE : " + ctx.TAG_CLOSE(i));
+
+        }
+
         if (ctx.htmlContent() != null) {
             htmlElement.setHtmlContent(visitHtmlContent(ctx.htmlContent()));
         }
         if (ctx.TAG_SLASH() != null) {
             htmlElement.setTAG_SLASH(ctx.TAG_SLASH().toString());
             System.out.println("TAG SLASH : " + ctx.TAG_SLASH());
-
-        }
-        for (int i = 0; i < ctx.TAG_CLOSE().size(); i++) {
-            htmlElement.getTAG_CLOSE().add(ctx.TAG_CLOSE(i).toString());
-            System.out.println("TAG CLOSE : " + ctx.TAG_CLOSE(i));
 
         }
         if (ctx.TAG_SLASH_CLOSE() != null) {
@@ -189,7 +196,7 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
             cp.setCP_MODEL(ctx.CP_MODEL().toString());
         }
         if (ctx.CP_APP() != null) {
-            System.out.println(ctx.CP_MODEL().getText());
+            System.out.println(ctx.CP_APP().getText());
 
             cp.setCP_APP(ctx.CP_APP().toString());
         }
@@ -210,13 +217,11 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         }
         if (ctx.CP_SWITCH() != null) {
             System.out.println(ctx.CP_SWITCH().getText());
-
             cp.setCP_SWITCH(ctx.CP_SWITCH().toString());
         }
         if (ctx.CP_SWITCH_CASE() != null) {
             System.out.println(ctx.CP_SWITCH_CASE().getText());
-
-            cp.setCP_SWITCH(ctx.CP_SWITCH().toString());
+            cp.setCP_SWITCH(ctx.CP_SWITCH_CASE().toString());
         }
 
         return cp;
@@ -485,5 +490,30 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
 //
 //        return htmlElement;
 //    }
+//
+//    @Override
+//    public HTMLElement visitHtmlElement(HTMLParser.HtmlElementContext ctx) {
+//        HTMLTag tag = new HTMLTag();
+//        tag.setName(ctx.TAG_NAME(0).getText());
+//
+//        if(ctx.htmlContent().htmlElement().size() <= 0){ // Html tag
+//            tag.setTextContent(ctx.htmlContent().htmlChardata(0).getText());
+//            return tag;
+//            //TODO iterate on ctx.htmlAttribute() and generate attribute then set it tag
+//        }
+//        else if(ctx.htmlContent().htmlElement().size() > 0){
+//            List<HTMLElement> elements = new ArrayList<HTMLElement>();
+//            for(int i = 0 ; i< ctx.htmlContent().htmlElement().size() ; i++){
+//                elements.add(visitHtmlElement(ctx.htmlContent().htmlElement(i)));
+//            }
+//            tag.setContent(elements);
+//            return tag;
+//
+//        }
+//        return new HTMLElement();
+//
+//    }
+
+
 
 }
