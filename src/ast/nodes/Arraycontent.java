@@ -2,33 +2,13 @@ package ast.nodes;
 
 public class Arraycontent  {
 
-//    private String variable;
-//    private boolean aboolean;
+    private  String  ARRAYCONTENT;
 
-    private Array array=new Array();
-
-    public Array getArray() {
-        return array;
+    public String getARRAYCONTENT() {
+        return ARRAYCONTENT;
     }
 
-    public void setArray(Array array) {
-        this.array = array;
+    public void setARRAYCONTENT(String ARRAYCONTENT) {
+        this.ARRAYCONTENT = ARRAYCONTENT;
     }
-//    public boolean isAboolean() {
-//        return aboolean;
-//    }
-//
-//    public void setAboolean(boolean aboolean) {
-//        this.aboolean = aboolean;
-//    }
-//
-//    private String getVariable() {
-//        return variable;
-//    }
-//
-//    public void setVariable(String variable) {
-//        this.variable = variable;
-//    }
-
-
 }

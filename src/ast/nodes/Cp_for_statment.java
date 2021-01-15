@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Cp_for_statment extends  Node {
 
-    private  List<Expression> list=new ArrayList<>();
+    private  List<Expression1> list=new ArrayList<>();
 
-    public List<Expression> getList() {
+    public List<Expression1> getList() {
         return list;
     }
 
-    public void setList(List<Expression> list) {
+    public void setList(List<Expression1> list) {
         this.list = list;
     }
 

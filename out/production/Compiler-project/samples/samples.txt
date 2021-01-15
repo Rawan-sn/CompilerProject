@@ -1,5 +1,5 @@
 <html>
 <body>
-<div cp-if="isAuthenitcated">
+<p cp-for="x in ['1','2','4'];i=index"> {{x}}, {{i}} </p>
 </body>
 </html>

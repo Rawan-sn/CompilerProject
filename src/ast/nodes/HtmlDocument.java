@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HtmlDocument extends Node {
+    private List<htmlMisc> miscs=new ArrayList<>();
     private List<htmlElements> elements = new ArrayList<htmlElements>();
     private  boolean xml = false;
     private  boolean dtd = false;
-    private List<htmlMisc> miscs=new ArrayList<>();
+
     private  List<scriptletOrSeaWs> scriptletOrSeaWs=new ArrayList<>();
 
     public List<ast.nodes.scriptletOrSeaWs> getScriptletOrSeaWs() {

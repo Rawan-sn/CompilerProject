@@ -1,6 +1,6 @@
 package ast.nodes;
 
-public class Expression  extends  Node {
+public class Expression1 extends  Node {
 
    private String ATT_VARIABLE;
    private Array array=new Array();

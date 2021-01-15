@@ -1,6 +1,5 @@
 package ast.nodes;
 
-//l
 public class htmlMisc extends Node {
 
     private  htmlComment comment=new htmlComment();
