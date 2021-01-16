@@ -21,6 +21,6 @@ public class Attribute {
     }
 
     public String toString(){
-        return "Attribute name: "+ getName() + "\n \t" + "Attribute value: " + getValue();
+        return "Attribute name: "+ getName() + "\n \t" + "Attribute value: " + getValue() +" ,";
     }
 }

@@ -54,5 +54,6 @@ public class HTMLTag extends HTMLElement {
         return "tag name: "+ getSCRIPTLET() + "\n \t" + "content: " + getTextContent();
     }
 
+
 }
 

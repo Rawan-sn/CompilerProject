@@ -10,7 +10,24 @@ public class htmlAttribute extends  Node {
    private Cp_for_statment cp_for_statment=new Cp_for_statment();
    private Cp_switch_Default cp_switch_default=new Cp_switch_Default();
    private Attributes attributes=new Attributes();
+   private String name;
+   private String value;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getValue() {
+        return value;
+    }
     public Attributes getAttributes() {
         return attributes;
     }

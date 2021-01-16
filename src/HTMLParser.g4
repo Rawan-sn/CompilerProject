@@ -43,8 +43,6 @@ attributes
     : ( ID | TYPE | CLASS | CLICK | MOUSEOVER | DATAMODULE )
       open_statment expression close_statment
     ;
-
-//كلاس بحط فيا سترينغات ويلي بتجي بعبيها  او بوليان يلي بتجي بحطا ترو او ايتم بحط اوبجكت دوت كذا
 cp
     :( CP_IF | CP_APP | CP_HIDE | CP_MODEL | CP_SHOW | CP_SWITCH |  CP_SWITCH_CASE |CP_FOR)
     ;
@@ -126,4 +124,3 @@ script
 style
     : STYLE_OPEN (STYLE_BODY | STYLE_SHORT_BODY)
     ;
-//C:\Users\Pc\Desktop\Compiler-project\src\generated

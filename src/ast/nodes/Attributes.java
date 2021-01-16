@@ -5,8 +5,16 @@ public class Attributes extends  Node {
 
     private String  ID ,TYPE , CLASS , CLICK , MOUSEOVER , DATAMODULE;
     private Open_statment open_statment=new Open_statment();
-    private   Close_statment close_statment=new Close_statment();
+    private Expression1 expression1=new Expression1();
+    private Close_statment close_statment=new Close_statment();
 
+    public Expression1 getExpression1() {
+        return expression1;
+    }
+
+    public void setExpression1(Expression1 expression1) {
+        this.expression1 = expression1;
+    }
 
     public Open_statment getOpen_statment() {
         return open_statment;
