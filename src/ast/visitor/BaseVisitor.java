@@ -166,11 +166,11 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         }
        if(ctx.content().size()!=0)
        {
-           System.out.println("Contents[");
+           System.out.println("\t\tContents[");
        }
         for (int i = 0; i < ctx.content().size(); i++) {
             htmlContent.getContent().add(visitContent(ctx.content(i)));
-            System.out.println("ccccccccccc");
+            System.out.print(ctx.content().get(i).getText());
         }
 
 

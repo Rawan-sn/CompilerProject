@@ -8,7 +8,7 @@
         <header>
             <div>
                 <ul class="navProvider" cp-for="x in t;i=index">
-                    <li>{{i}} : {{x}}</li>
+                   {{i}} : {{x}}
                 </ul>
             </div>
         </header>
