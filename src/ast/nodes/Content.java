@@ -1,6 +1,6 @@
 package ast.nodes;
 
-public class Content  extends  Node  {
+public class Content extends Node {
 
     Expression1 expression = new Expression1();
 

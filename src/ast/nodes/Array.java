@@ -1,6 +1,6 @@
 package ast.nodes;
 
-public class Array extends  Node {
+public class Array extends Node {
 
     private Arraycontent arraycontent = new Arraycontent();
 

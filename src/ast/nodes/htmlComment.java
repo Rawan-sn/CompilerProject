@@ -1,9 +1,9 @@
 package ast.nodes;
 
-public class htmlComment extends  Node {
+public class htmlComment extends Node {
 
-  private String HTML_COMMENT;
-  private String HTML_CONDITIONAL_COMMENT;
+    private String HTML_COMMENT;
+    private String HTML_CONDITIONAL_COMMENT;
 
     public String getHTML_COMMENT() {
         return HTML_COMMENT;

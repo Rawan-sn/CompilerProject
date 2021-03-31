@@ -3,10 +3,10 @@ package ast.nodes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class htmlElements extends  Node {
+public class htmlElements extends Node {
 
     private List<htmlMisc> htmlMiscs = new ArrayList<htmlMisc>();
-    private  HTMLElement htmlElement=new HTMLElement();
+    private HTMLElement htmlElement = new HTMLElement();
 
     public List<htmlMisc> getHtmlMiscs() {
         return htmlMiscs;

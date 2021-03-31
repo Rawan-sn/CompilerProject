@@ -1,15 +1,10 @@
-import ast.nodes.BaseASTVisitor;
 import ast.nodes.HtmlDocument;
 import ast.visitor.BaseVisitor;
 import generated.HTMLLexer;
 import generated.HTMLParser;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.runtime.*;
-import org.antlr.runtime.tree.*;
 
 import java.io.IOException;
 

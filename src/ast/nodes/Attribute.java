@@ -20,7 +20,7 @@ public class Attribute {
         this.value = value;
     }
 
-    public String toString(){
-        return "Attribute name: "+ getName() + "\n \t" + "Attribute value: " + getValue() +" ,";
+    public String toString() {
+        return "Attribute name: " + getName() + "\n \t" + "Attribute value: " + getValue() + " ,";
     }
 }

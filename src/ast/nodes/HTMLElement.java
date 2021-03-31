@@ -4,14 +4,14 @@ import javax.swing.text.html.HTML;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HTMLElement extends Node{
+public class HTMLElement extends Node {
 
 //    private HTMLTag htmlTag=new HTMLTag();
 
     //private String TAG_OPEN;
-    private List<String>TAG_OPEN=new ArrayList<>();
-    private List<String>TAG_NAME=new ArrayList<>();
-    private List<String>TAG_CLOSE=new ArrayList<>();
+    private List<String> TAG_OPEN = new ArrayList<>();
+    private List<String> TAG_NAME = new ArrayList<>();
+    private List<String> TAG_CLOSE = new ArrayList<>();
 
     //private String TAG_NAME;
 //    private String TAG_CLOSE;
@@ -19,7 +19,7 @@ public class HTMLElement extends Node{
     private String TAG_SLASH_CLOSE;
     private String SCRIPTLET;
     private List<htmlAttribute> htmlAttribute = new ArrayList<htmlAttribute>();
-    private htmlContent htmlContent =  new htmlContent();
+    private htmlContent htmlContent = new htmlContent();
 
 
     public List<String> getTAG_CLOSE() {

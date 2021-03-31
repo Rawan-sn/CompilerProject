@@ -1,8 +1,8 @@
 package ast.nodes;
 
-public class Arraycontent  {
+public class Arraycontent {
 
-    private  String  ARRAYCONTENT;
+    private String ARRAYCONTENT;
 
     public String getARRAYCONTENT() {
         return ARRAYCONTENT;

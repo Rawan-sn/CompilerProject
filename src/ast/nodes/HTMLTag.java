@@ -50,8 +50,8 @@ public class HTMLTag extends HTMLElement {
     }
 
     @Override
-    public String toString(){
-        return "tag name: "+ getSCRIPTLET() + "\n \t" + "content: " + getTextContent();
+    public String toString() {
+        return "tag name: " + getSCRIPTLET() + "\n \t" + "content: " + getTextContent();
     }
 
 

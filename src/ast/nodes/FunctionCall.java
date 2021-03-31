@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FunctionCall extends Node {
-    private  String ATT_VARIABLE;
+    private String ATT_VARIABLE;
+    private String TAG_OPENFUNCTION;
     private List<FunctionParametr> functionParametrs = new ArrayList<FunctionParametr>();
 
     public String getATT_VARIABLE() {
@@ -22,7 +23,12 @@ public class FunctionCall extends Node {
     public void setFunctionParametrs(List<FunctionParametr> functionParametrs) {
         this.functionParametrs = functionParametrs;
     }
-
+    public String getTAG_OPENFUNCTION() {
+        return TAG_OPENFUNCTION;
+    }
+    public void setTAG_OPENFUNCTION(String TAG_OPENFUNCTION) {
+        this.TAG_OPENFUNCTION = TAG_OPENFUNCTION;
+    }
     @Override
     public void accept(AstVisitorInterface astVisitor) {
 

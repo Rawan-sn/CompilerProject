@@ -3,10 +3,10 @@ package ast.nodes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionParametr  {
-//    private List<String > ATT_VARIABLE=new ArrayList<>();
-    private  String   ATT_VARIABLE;
-    private FunctionCall functionCall  = new FunctionCall();
+public class FunctionParametr {
+    //    private List<String > ATT_VARIABLE=new ArrayList<>();
+    private String ATT_VARIABLE;
+    private FunctionCall functionCall = new FunctionCall();
 
 //    public List<String> getATT_VARIABLE() {
 //        return ATT_VARIABLE;

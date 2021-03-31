@@ -1,15 +1,13 @@
-
 <!--2-->
-
 <!-- for stmt 1-->
 <html>
 <head>
     <nav class="globalNav" data-module="nav">
         <header>
             <div>
-                <ul class="navProvider" cp-for="x in t;i=index">
-                   {{i}} : {{x}}
-                </ul>
+
+                    <li>{{i}}:+{{iv}}</li>
+
             </div>
         </header>
     </nav>

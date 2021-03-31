@@ -1,6 +1,6 @@
 package ast.nodes;
 
-public class scriptletOrSeaWs extends  Node {
+public class scriptletOrSeaWs extends Node {
 
     private String scriptLeft;
 

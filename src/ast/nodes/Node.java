@@ -1,7 +1,6 @@
 package ast.nodes;
 
 
-
 public abstract class Node {
 
     private int line;

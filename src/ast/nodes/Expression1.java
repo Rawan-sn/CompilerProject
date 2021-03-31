@@ -1,15 +1,72 @@
 package ast.nodes;
 
-public class Expression1 extends  Node {
+import java.util.ArrayList;
+import java.util.List;
 
-   private String ATT_VARIABLE;
-   private Array array=new Array();
-   private FunctionCall functionCall=new FunctionCall();
-   private String OBJ;
-   private String INDEX;
-   private String ATTVALUE_VALUE;
-   private String ATT_NUMBER;
+public class Expression1 extends Node {
 
+    private String ATT_VARIABLE;
+    private Array array = new Array();
+    private FunctionCall functionCall = new FunctionCall();
+    private String OBJ;
+    private String INDEX;
+    private String ATTVALUE_VALUE;
+    private String ATT_NUMBER;
+    private List<String> ASSIGN = new ArrayList<>();
+    private String OPERATION;
+    private String OR;
+    private String IF_CONDITION;
+    private String DOT;
+
+    public String getOPERATION() {
+        return OPERATION;
+    }
+
+    public void setOPERATION(String OPERATION) {
+        this.OPERATION = OPERATION;
+    }
+
+    public String getOR() {
+        return OR;
+    }
+
+    public void setOR(String OR) {
+        this.OR = OR;
+    }
+
+    public String getIF_CONDITION() {
+        return IF_CONDITION;
+    }
+
+    public void setIF_CONDITION(String IF_CONDITION) {
+        this.IF_CONDITION = IF_CONDITION;
+    }
+
+    public String getDOT() {
+        return DOT;
+    }
+
+    public void setDOT(String DOT) {
+        this.DOT = DOT;
+    }
+
+    List<Expression1> expression1 = new ArrayList<>();
+
+    public List<Expression1> getExpression1() {
+        return expression1;
+    }
+
+    public void setExpression1(List<Expression1> expression1) {
+        this.expression1 = expression1;
+    }
+
+    public List<String> getASSIGN() {
+        return ASSIGN;
+    }
+
+    public void setASSIGN(List<String> ASSIGN) {
+        this.ASSIGN = ASSIGN;
+    }
 
     public String getATT_VARIABLE() {
         return ATT_VARIABLE;

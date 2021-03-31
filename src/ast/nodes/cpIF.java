@@ -1,9 +1,8 @@
 package ast.nodes;
 
-public class cpIF extends Attribute{
+public class cpIF extends Attribute {
     private String opvalue;
 //    private Expression expressoin;
-
 
 
     public String getOpvalue() {
@@ -14,7 +13,7 @@ public class cpIF extends Attribute{
         this.opvalue = opvalue;
     }
 
-    public void accept(AstVisitorInterface astVisitorInterface){
+    public void accept(AstVisitorInterface astVisitorInterface) {
         astVisitorInterface.visit(this);
 
 

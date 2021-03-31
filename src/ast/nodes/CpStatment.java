@@ -3,10 +3,10 @@ package ast.nodes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CpStatment extends  Node {
+public class CpStatment extends Node {
 
-  private List<String> spaces=new ArrayList<>();
-  private List<Expression1> expressions=new ArrayList<>();
+    private List<String> spaces = new ArrayList<>();
+    private List<Expression1> expressions = new ArrayList<>();
 
     public List<Expression1> getExpressions() {
         return expressions;

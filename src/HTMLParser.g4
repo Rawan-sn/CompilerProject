@@ -108,6 +108,7 @@ expression
     : ATT_VARIABLE
     | array
     | functionCall
+    | VALUE_QUOTE_OPEN
     | OBJ
     | INDEX
     | TAG_OPENBB* ATTVALUE_VALUE TAG_CLOSEBB*

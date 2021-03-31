@@ -2,7 +2,7 @@ package ast.nodes;
 
 public class BaseASTVisitor implements AstVisitorInterface {
 
-    public void visit(HtmlDocument document){
+    public void visit(HtmlDocument document) {
         System.out.println("doc");
     }
 
@@ -11,7 +11,6 @@ public class BaseASTVisitor implements AstVisitorInterface {
         // Code here ..
         System.out.println("Cp if");
     }
-
 
 
 }

@@ -2,14 +2,14 @@ package ast.nodes;
 
 public class Cp extends Node {
 
-    private String CP_IF ,
-                   CP_APP ,
-                   CP_HIDE ,
-                   CP_MODEL,
-                   CP_SHOW,
-                   CP_SWITCH ,
-                   CP_SWITCH_CASE,
-                   CP_FOR;
+    private String CP_IF,
+            CP_APP,
+            CP_HIDE,
+            CP_MODEL,
+            CP_SHOW,
+            CP_SWITCH,
+            CP_SWITCH_CASE,
+            CP_FOR;
 
     public String getCP_IF() {
         return CP_IF;

@@ -2,6 +2,7 @@ package ast.visitor;
 
 import ast.nodes.*;
 //import ast.nodes;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import generated.HTMLParser;
 import generated.HTMLParserBaseVisitor;
 
@@ -14,10 +15,17 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
     public HtmlDocument visitHtmlDocument(HTMLParser.HtmlDocumentContext ctx) {
         System.out.println("\nObject  {");
         HtmlDocument doc = new HtmlDocument();
-        for (int i = 0; i < ctx.htmlMisc().size(); i++) {
 
+        for(int i=0;i<ctx.htmlMisc().size();i++)
+        {
+
+        if(i%2==0) {
+            System.out.println("Html comment: " + ctx.htmlMisc().get(i).getText());
+        }
+        }
+        for (int i = 0; i < ctx.htmlMisc().size(); i++) {
+            //System.out.println("gkldfhgdh");
             doc.getMiscs().add(visitHtmlMisc(ctx.htmlMisc(i)));
-            System.out.println(ctx.htmlMisc(i).getText());
         }
         for (int i = 0; i < ctx.scriptletOrSeaWs().size(); i++) {
             doc.getScriptletOrSeaWs().add(visitScriptletOrSeaWs(ctx.scriptletOrSeaWs(i)));
@@ -136,6 +144,7 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
     public Content visitContent(HTMLParser.ContentContext ctx) {
         Content content = new Content();
         if (ctx.expression() != null) {
+            System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
             content.setExpression(visitExpression(ctx.expression()));
         }
         return content;
@@ -171,6 +180,11 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         for (int i = 0; i < ctx.content().size(); i++) {
             htmlContent.getContent().add(visitContent(ctx.content(i)));
             System.out.print(ctx.content().get(i).getText());
+
+        }
+        if( ctx.content().size()!=0)
+        {
+            System.out.println("]");
         }
 
 
@@ -300,6 +314,11 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
         for (int i = 0; i < ctx.functionParametr().size(); i++) {
             functionCall.getFunctionParametrs().add(visitFunctionParametr(ctx.functionParametr(i)));
         }
+        if(ctx.TAG_OPENFUNCTION()!=null)
+        {
+            functionCall.setTAG_OPENFUNCTION(ctx.TAG_OPENFUNCTION().toString());
+        }
+
         return functionCall;
     }
 
@@ -319,13 +338,12 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
     @Override
     public Expression1 visitExpression(HTMLParser.ExpressionContext ctx) {
         Expression1 expression = new Expression1();
-       // System.out.println(ctx.array());
         if (ctx.ATT_VARIABLE() != null) {
-//            System.out.println("value is:" + ctx.getText());
             expression.setATT_VARIABLE(ctx.ATT_VARIABLE().toString());
         }
           if(ctx.array()!=null)
           {
+
               System.out.println("Array is:" + ctx.getText());
               expression.setArray(visitArray(ctx.array()));
           }
@@ -339,24 +357,74 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
             expression.setINDEX(ctx.INDEX().toString());
         }
         if (ctx.ATTVALUE_VALUE() != null) {
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
             expression.setATTVALUE_VALUE(ctx.ATTVALUE_VALUE().toString());
         }
         if (ctx.ATT_NUMBER() != null) {
+
             expression.setATT_NUMBER(ctx.ATT_NUMBER().toString());
         }
+        for(int i=0;i<ctx.ASSIGN().size();i++)
+        {
 
+            expression.getASSIGN().add(ctx.ASSIGN(i).toString());
+        }
+        for(int i=0;i<ctx.expression().size();i++)
+        {
+            expression.getExpression1().add(visitExpression(ctx.expression(i)));
+        }
+         if(ctx.OR()!=null)
+         {
+             expression.setOR(ctx.OR().toString());
+         }
+         if(ctx.DOT()!=null)
+         {
+             expression.setDOT(ctx.DOT().toString());
+         }
+        if(ctx.OPERATION()!=null)
+        {
+            expression.setOPERATION(ctx.OPERATION().toString());
+        }
+        if(ctx.IF_CONDITION()!=null)
+        {
+            expression.setIF_CONDITION(ctx.IF_CONDITION().toString());
+        }
         return expression;
     }
 
     @Override
     public Open_statment visitOpen_statment(HTMLParser.Open_statmentContext ctx) {
         Open_statment open_statment = new Open_statment();
+        if(ctx.VALUE_EQUALS()!=null)
+        {
+            open_statment.setVALUE_EQUALS(ctx.VALUE_EQUALS().toString());
+        }
+        if(ctx.VALUE_QUOTE_OPEN()!=null)
+        {
+            open_statment.setVALUE_QUOTE_OPEN(ctx.VALUE_QUOTE_OPEN().toString());
+        }
+        if(ctx.VARIABLE_EQUALS()!=null)
+        {
+            open_statment.setVARIABLE_EQUALS(ctx.VARIABLE_EQUALS().toString());
+        }
+        if(ctx.VARIABLE_QUOTE_OPEN()!=null)
+        {
+            open_statment.setVARIABLE_QUOTE_OPEN(ctx.VARIABLE_QUOTE_OPEN().toString());
+        }
         return open_statment;
     }
 
     @Override
     public Close_statment visitClose_statment(HTMLParser.Close_statmentContext ctx) {
         Close_statment close_statment = new Close_statment();
+        if(ctx.VALUE_QUOTE_CLOSE()!=null)
+        {
+            close_statment.setVALUE_QUOTE_CLOSE(ctx.VALUE_QUOTE_CLOSE().toString());
+        }
+        if(ctx.VARIABLE_QUOTE_CLOSE()!=null)
+        {
+            close_statment.setVARIABLE_QUOTE_CLOSE(ctx.VARIABLE_QUOTE_CLOSE().toString());
+        }
         return close_statment;
     }
 
@@ -389,12 +457,10 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
             htmlAttribute.getAttribute().setName(ctx.TAG_NAME().getText());
 
         }
-        ///////////////////////////////////////////
         if(ctx.ATTVALUE_VALUE()!=null)
         {
             htmlAttribute.setValue(ctx.ATTVALUE_VALUE().toString());
             htmlAttribute.getAttribute().setValue(ctx.ATTVALUE_VALUE().getText());
-
         }
         if (ctx.cp() != null) {
             htmlAttribute.setCp(visitCp(ctx.cp()));
@@ -430,14 +496,6 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
             if(ctx.attributes().MOUSEOVER()!=null) { htmlAttribute.getAttribute().setName(ctx.attributes().MOUSEOVER().getText()); }
             if(ctx.attributes().DATAMODULE()!=null) { htmlAttribute.getAttribute().setName(ctx.attributes().DATAMODULE().getText()); }
 
-
-            //            System.out.println("fdfd");
-//            System.out.println(ctx.attributes().getText());
-//            System.out.println(ctx.attributes().expression().getText());
-//            System.out.println(ctx.attributes().getText().length());
-//            System.out.println(ctx.attributes().expression().getText().length());
-//            System.out.println(ctx.attributes().getText().substring( 0,ctx.attributes().getText().length()-(ctx.attributes().expression().getText().length()+3)));
-//            ctx.attributes().expression().getText().length();
             if(ctx.attributes().expression()!=null)
             {
                 htmlAttribute.getAttribute().setValue(ctx.attributes().expression().getText());
@@ -450,9 +508,11 @@ public class BaseVisitor extends HTMLParserBaseVisitor {
     @Override
     public htmlChardata visitHtmlChardata(HTMLParser.HtmlChardataContext ctx) {
 //        System.out.println("visit HtmlChardata");
+
         htmlChardata htmlChardata = new htmlChardata();
         if (ctx.HTML_TEXT() != null) {
             htmlChardata.setName(ctx.HTML_TEXT().toString());
+            System.out.println("\t Html Text: "+ctx.getText());
         }
         return htmlChardata;
     }

@@ -5,10 +5,10 @@ import java.util.List;
 
 public class htmlContent {
 
-    private List<htmlChardata> htmlChardata=new ArrayList<>();
-    private List<HTMLElement> htmlElement=new ArrayList<>();
-    private List<htmlComment> htmlComment =new ArrayList<>();
-    private List<Content> content =new ArrayList<>();
+    private List<htmlChardata> htmlChardata = new ArrayList<>();
+    private List<HTMLElement> htmlElement = new ArrayList<>();
+    private List<htmlComment> htmlComment = new ArrayList<>();
+    private List<Content> content = new ArrayList<>();
 
     public List<HTMLElement> getHtmlElement() {
         return htmlElement;

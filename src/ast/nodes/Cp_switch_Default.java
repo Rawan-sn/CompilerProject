@@ -3,8 +3,6 @@ package ast.nodes;
 public class Cp_switch_Default extends  Node {
    private String CP_SWITCH_DEFAULT;
 
-
-
     public String getCP_SWITCH_DEFAULT() {
         return CP_SWITCH_DEFAULT;
     }

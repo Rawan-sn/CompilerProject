@@ -2,7 +2,7 @@ package ast.nodes;
 
 public class htmlMisc extends Node {
 
-    private  htmlComment comment=new htmlComment();
+    private htmlComment comment = new htmlComment();
 
     public htmlComment getComment() {
         return comment;
